@@ -10,3 +10,13 @@ El desarrollo de estos ejercicios de aplicaciones se llevaron a cabo usando Type
 `npx create-react-app mi-aplicacion --template typescript`
 
 Para más información, consultar la documentación de [Create React App](https://create-react-app.dev/docs/getting-started/).
+
+---------------------------------
+
+### React Native con TypeScript
+
+Para generar una aplicación de React Native con TypeScript se utiliza el comando:
+
+`npx react-native init MyApp --template react-native-template-typescript`
+
+Para más información y la guía de las instalaciones necesarias consultar la documentación de [React Native Environment setup](https://reactnative.dev/docs/environment-setup).
