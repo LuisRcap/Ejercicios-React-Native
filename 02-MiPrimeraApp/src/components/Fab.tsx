@@ -2,21 +2,22 @@ import React from 'react';
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 
 interface Props {
-    title: string
+    title: string;
+    onPress: () => void;
 }
 
-const Fab = ( { title }: Props) => {
+const Fab = ( { title, onPress }: Props) => {
 
     console.log(title);
 
     return (
         <TouchableOpacity
-            onPress={ () => console.log('Click') }
+            onPress={ onPress }
             style={ styles.boton_wrapBR }
         >
             <View style={ styles.fab }>
                 <Text style={ styles.text_boton }>
-                    +1
+                    { title }
                 </Text>
             </View>
         </TouchableOpacity>
