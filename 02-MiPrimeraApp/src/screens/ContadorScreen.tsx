@@ -15,12 +15,23 @@ const ContadorScreen = () => {
             </Text>
 
             <TouchableOpacity
-                onPress={ () => setContador( contador +1 ) }
-                style={ styles.boton_wrap }
+                onPress={ () => setContador( contador + 1 ) }
+                style={ styles.boton_wrapBR }
             >
-                <View style={ styles.boton }>
+                <View style={ styles.fab }>
                     <Text style={ styles.text_boton }>
                         +1
+                    </Text>
+                </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                onPress={ () => setContador( contador - 1 ) }
+                style={ styles.boton_wrapBL }
+            >
+                <View style={ styles.fab }>
+                    <Text style={ styles.text_boton }>
+                        -1
                     </Text>
                 </View>
             </TouchableOpacity>
@@ -34,24 +45,32 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     title: {
-        textAlign: 'center',
         fontSize: 40,
+        textAlign: 'center',
         top: -15
     },
-    boton_wrap: {
-        width: 50,
-        alignSelf: 'center'
+    boton_wrapBR: {
+        bottom: 25,
+        position: 'absolute',
+        right: 25,
+        width: 50
     },
-    boton: {
-        backgroundColor: '#2196F3',
-        borderRadius: 100,
-        width: 50,
-        height: 50,
+    boton_wrapBL: {
+        bottom: 25,
+        position: 'absolute',
+        left: 25,
+        width: 50
+    },
+    fab: {
         alignSelf: 'center',
-        justifyContent: 'center'
+        backgroundColor: '#5856D6',
+        borderRadius: 100,
+        height: 60,
+        justifyContent: 'center',
+        width: 60
     },
     text_boton: {
-        textAlign: 'center',
+        alignSelf: 'center',
         color: "white",
         fontSize: 22,
         fontWeight: 'bold',
