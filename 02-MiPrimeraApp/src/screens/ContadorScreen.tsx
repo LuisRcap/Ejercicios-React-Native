@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 import { useState } from 'react';
+import Fab from '../components/Fab';
 
 const ContadorScreen = () => {
 
@@ -14,18 +15,11 @@ const ContadorScreen = () => {
                 Contador: { contador }
             </Text>
 
-            <TouchableOpacity
-                onPress={ () => setContador( contador + 1 ) }
-                style={ styles.boton_wrapBR }
-            >
-                <View style={ styles.fab }>
-                    <Text style={ styles.text_boton }>
-                        +1
-                    </Text>
-                </View>
-            </TouchableOpacity>
+            <Fab
+                title="+1"
+            />
 
-            <TouchableOpacity
+            {/* <TouchableOpacity
                 onPress={ () => setContador( contador - 1 ) }
                 style={ styles.boton_wrapBL }
             >
@@ -34,7 +28,7 @@ const ContadorScreen = () => {
                         -1
                     </Text>
                 </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </View>
     )
 }
@@ -49,33 +43,13 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         top: -15
     },
-    boton_wrapBR: {
-        bottom: 25,
-        position: 'absolute',
-        right: 25,
-        width: 50
-    },
     boton_wrapBL: {
         bottom: 25,
         position: 'absolute',
         left: 25,
         width: 50
     },
-    fab: {
-        alignSelf: 'center',
-        backgroundColor: '#5856D6',
-        borderRadius: 100,
-        height: 60,
-        justifyContent: 'center',
-        width: 60
-    },
-    text_boton: {
-        alignSelf: 'center',
-        color: "white",
-        fontSize: 22,
-        fontWeight: 'bold',
-        top: -2
-    }
+    
 });
 
 export default ContadorScreen;
