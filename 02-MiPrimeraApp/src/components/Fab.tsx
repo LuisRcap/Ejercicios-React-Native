@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, View, Text, StyleSheet, TouchableNativeFeedback } from 'react-native';
+import { TouchableOpacity, View, Text, StyleSheet, TouchableNativeFeedback, Platform } from 'react-native';
 
 interface Props {
     title: string;
@@ -9,30 +9,52 @@ interface Props {
 
 const Fab = ( { title, position = 'br', onPress }: Props) => {
 
-    return (
+    const ios = () => {
+        return(
+            <TouchableOpacity
+                activeOpacity={ 0.75 }
+                onPress={ onPress }
+                style={[ styles.fabLocation, ( position === 'bl' ) ? styles.left : styles.right ]}
+            >
+                <View style={ styles.fab }>
+                    <Text style={ styles.text_boton }>
+                        { title }
+                    </Text>
+                </View>
+            </TouchableOpacity>
+        )
+    };
 
-        <View style={[ styles.fabLocation, ( position === 'bl' ) ? styles.left : styles.right ]} >
+    const android = () => {
+        return(
 
-        <TouchableNativeFeedback 
-            onPress={ onPress }
-            background={ TouchableNativeFeedback.Ripple('#28425B', false, 30) }
-        >
-            <View style={ styles.fab }>
-                <Text style={ styles.text_boton }>
-                    { title }
-                </Text>
+            <View
+                style={[ styles.fabLocation, ( position === 'bl' ) ? styles.left : styles.right ]}
+            >
+                <TouchableNativeFeedback
+                    onPress={ onPress }
+                    background={ TouchableNativeFeedback.Ripple('#28425B', false, 30) }
+                >
+                    <View style={ styles.fab }>
+                        <Text style={ styles.text_boton }>
+                            { title }
+                        </Text>
+                    </View>
+                </TouchableNativeFeedback>
+
             </View>
-        </TouchableNativeFeedback>
-        </View>
+        );
+    };
 
-    )
+    return ( Platform.OS === 'ios' ) ? ios() : android();
+
 }
 
 const styles = StyleSheet.create({
 
     fabLocation: {
         bottom: 25,
-        position: 'absolute'
+        position: 'absolute',
     },
     right: {
         right: 25
